@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import {LoadingComponent} from './LoadingComponent';
 
 class PayForPlanComponent extends Component {
   render() {
-    const {chosenPlanId} = this.props;
+    const {chosenPlanId, loading} = this.props;
+
+    if (loading) {
+      return (
+        <LoadingComponent />
+      )
+    }
 
     return (
       <div>
