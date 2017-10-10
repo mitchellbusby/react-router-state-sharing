@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {FetchMyData, FetchPlans} from './MyApi';
-import {ChoosePlanComponent} from './ChoosePlan';
-import {PayForPlanComponent} from './PayForPlan';
+import {ChoosePlanRoute} from './ChoosePlanRoute';
 import {PayForPlanRoute} from './PayForPlanRoute';
 import {Route} from 'react-router-dom';
 
@@ -38,7 +37,7 @@ class App extends Component {
         <Route path='/' exact
           render={({history}) => {
             return (
-              <ChoosePlanComponent
+              <ChoosePlanRoute
                 plans={plans}
                 loading={loading}
                 handleChosen={(planChosen) => {history.push(`/payforplan/${planChosen}`)}}

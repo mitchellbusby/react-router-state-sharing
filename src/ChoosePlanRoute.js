@@ -1,10 +1,11 @@
-import {ChoosePlan} from './ChoosePlan';
+import React from 'react';
+import {ChoosePlanComponent} from './ChoosePlan';
 
-const ChoosePlanRoute = ({match, plans, loading, handleChosen}) => {
+const ChoosePlanRoute = ({plans, loading, handleChosen}) => {
   return (
-    <ChoosePlan
-      plans={plans},
-      loading={loading},
+    <ChoosePlanComponent
+      plans={plans}
+      loading={loading}
       handleChosen={handleChosen}
     />
   )

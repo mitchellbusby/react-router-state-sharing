@@ -4,7 +4,7 @@ import {LoadingComponent} from './LoadingComponent';
 
 class ChoosePlanComponent extends Component {
   render() {
-    const {plans, loading, handleChosen} = this.props;
+    const {plans, loading} = this.props;
 
     if (loading) {
       return (
