@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import {FetchMyData, FetchPlans} from './MyApi';
 import {ChoosePlanComponent} from './ChoosePlan';
 import {PayForPlanComponent} from './PayForPlan';
+import {PayForPlanRoute} from './PayForPlanRoute';
+import {Route} from 'react-router-dom';
+
 import './App.css';
 
 class App extends Component {
@@ -30,22 +33,36 @@ class App extends Component {
   render() {
     const {chosen, loading, plans} = this.state;
 
-    const block = chosen !== null ? (
-      <PayForPlanComponent loading={loading} plans={plans} chosenPlanId={chosen} />
-    ) : (
-      <ChoosePlanComponent loading={loading} plans={plans} handleChosen={this.handleChosen} />
-    )
-
     return (
       <div className="App">
+        <Route path='/' exact
+          render={({history}) => {
+            return (
+              <ChoosePlanComponent
+                plans={plans}
+                loading={loading}
+                handleChosen={(planChosen) => {history.push(`/payforplan/${planChosen}`)}}
+              />
+            )
+        }}
+        />
+      <Route path='/payforplan/:id' exact render={({match}) =>
         {
-          block
-        }
+          return (
+            <PayForPlanRoute
+              match={match}
+              loading={loading}
+              plans={plans}
+              />
+          )
+        }}
+        />
       </div>
     );
   }
 
   handleChosen = planChosen => e => {
+
     this.setState({
       chosen: planChosen,
     });

@@ -17,11 +17,16 @@ class ChoosePlanComponent extends Component {
         <p>Choose your plan!</p>
         {
           plans.map(plan => (
-            <button key={plan} onClick={handleChosen(plan)}>Plan {plan}</button>
+            <button key={plan} onClick={this.onChoose(plan)}>Plan {plan}</button>
           ))
         }
       </div>
     )
+  }
+
+  onChoose = planId => evt => {
+    const {handleChosen} = this.props;
+    handleChosen(planId);
   }
 }
 
